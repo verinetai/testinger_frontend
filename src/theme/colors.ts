@@ -1,0 +1,17 @@
+export const colors = {
+  background: "#0a0a0b",
+  backgroundElevated: "#121214",
+  surface: "rgba(255, 255, 255, 0.06)",
+  surfaceBorder: "rgba(255, 255, 255, 0.12)",
+  textPrimary: "#f4f4f5",
+  textSecondary: "#a1a1aa",
+  textMuted: "#71717a",
+  accent: "#3b82f6",
+  accentPressed: "#2563eb",
+  success: "#22c55e",
+  danger: "#ef4444",
+  tabInactive: "#71717a",
+  tabActive: "#f4f4f5",
+  glassHighlight: "rgba(255, 255, 255, 0.08)",
+  overlay: "rgba(0, 0, 0, 0.55)",
+} as const;
