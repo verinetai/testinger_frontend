@@ -29,7 +29,11 @@ export function HomeScreen() {
       const data = await fetchPublishedTests();
       setTests(data);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Testler yüklenemedi");
+      const message =
+        err && typeof err === "object" && "message" in err
+          ? String((err as { message: string }).message)
+          : "Testler yüklenemedi";
+      setError(message);
     } finally {
       setLoading(false);
       setRefreshing(false);
