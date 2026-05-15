@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   pressed: {
-    backgroundColor: colors.accentPressed,
+    backgroundColor: colors.accentAlt,
   },
   label: {
     ...typography.caption,

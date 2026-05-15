@@ -14,6 +14,89 @@ export type Database = {
   }
   public: {
     Tables: {
+      categories: {
+        Row: {
+          content_format: string
+          created_at: string
+          gradient_end: string
+          gradient_start: string
+          icon_emoji: string
+          id: string
+          intensity: string
+          is_active: boolean
+          slug: string
+          sort_order: number
+          subtitle: string | null
+          title: string
+        }
+        Insert: {
+          content_format: string
+          created_at?: string
+          gradient_end?: string
+          gradient_start?: string
+          icon_emoji?: string
+          id?: string
+          intensity?: string
+          is_active?: boolean
+          slug: string
+          sort_order?: number
+          subtitle?: string | null
+          title: string
+        }
+        Update: {
+          content_format?: string
+          created_at?: string
+          gradient_end?: string
+          gradient_start?: string
+          icon_emoji?: string
+          id?: string
+          intensity?: string
+          is_active?: boolean
+          slug?: string
+          sort_order?: number
+          subtitle?: string | null
+          title?: string
+        }
+        Relationships: []
+      }
+      prompts: {
+        Row: {
+          body: string
+          category_id: string
+          created_at: string
+          id: string
+          is_active: boolean
+          play_count: number
+          prompt_type: string
+        }
+        Insert: {
+          body: string
+          category_id: string
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          play_count?: number
+          prompt_type?: string
+        }
+        Update: {
+          body?: string
+          category_id?: string
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          play_count?: number
+          prompt_type?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "prompts_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "categories"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       app_versions: {
         Row: {
           id: number
@@ -114,7 +197,9 @@ export type Database = {
           avatar_url: string | null
           created_at: string
           id: string
+          last_active_date: string | null
           level: number
+          streak_days: number
           role: Database["public"]["Enums"]["user_role"] | null
           total_points: number
           updated_at: string
@@ -124,8 +209,10 @@ export type Database = {
           avatar_url?: string | null
           created_at?: string
           id: string
+          last_active_date?: string | null
           level?: number
           role?: Database["public"]["Enums"]["user_role"] | null
+          streak_days?: number
           total_points?: number
           updated_at?: string
           username: string
@@ -134,8 +221,10 @@ export type Database = {
           avatar_url?: string | null
           created_at?: string
           id?: string
+          last_active_date?: string | null
           level?: number
           role?: Database["public"]["Enums"]["user_role"] | null
+          streak_days?: number
           total_points?: number
           updated_at?: string
           username?: string
