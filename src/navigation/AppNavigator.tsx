@@ -1,34 +1,30 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer, DarkTheme } from "@react-navigation/native";
-import { HomeScreen } from "../screens/HomeScreen";
-import { PlayScreen } from "../screens/PlayScreen";
+import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
+import { DiscoverScreen } from "../screens/DiscoverScreen";
+import { FriendsScreen } from "../screens/FriendsScreen";
 import { ProfileScreen } from "../screens/ProfileScreen";
+import { TestsScreen } from "../screens/TestsScreen";
 import { colors } from "../theme";
+import { BottomTabBar } from "./BottomTabBar";
 
 export type RootTabParamList = {
-  Home: undefined;
-  Play:
-    | {
-        categoryId: string;
-        categoryTitle: string;
-        gradientStart: string;
-        gradientEnd: string;
-      }
-    | undefined;
+  Discover: undefined;
+  Tests: undefined;
+  Friends: undefined;
   Profile: undefined;
 };
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
 
 const navTheme = {
-  ...DarkTheme,
+  ...DefaultTheme,
   colors: {
-    ...DarkTheme.colors,
+    ...DefaultTheme.colors,
     background: colors.background,
     card: colors.backgroundElevated,
-    border: colors.surfaceBorder,
+    border: colors.border,
     text: colors.textPrimary,
-    primary: colors.accent,
+    primary: colors.brand,
   },
 };
 
@@ -36,27 +32,26 @@ export function AppNavigator() {
   return (
     <NavigationContainer theme={navTheme}>
       <Tab.Navigator
+        tabBar={(props) => <BottomTabBar {...props} />}
         screenOptions={{
           headerShown: false,
-          tabBarStyle: {
-            backgroundColor: colors.backgroundElevated,
-            borderTopColor: colors.surfaceBorder,
-            height: 60,
-            paddingBottom: 8,
-          },
-          tabBarActiveTintColor: colors.tabActive,
-          tabBarInactiveTintColor: colors.tabInactive,
+          sceneStyle: { backgroundColor: colors.background },
         }}
       >
         <Tab.Screen
-          name="Home"
-          component={HomeScreen}
+          name="Discover"
+          component={DiscoverScreen}
           options={{ title: "Keşfet" }}
         />
         <Tab.Screen
-          name="Play"
-          component={PlayScreen}
-          options={{ title: "Oyna" }}
+          name="Tests"
+          component={TestsScreen}
+          options={{ title: "Testler" }}
+        />
+        <Tab.Screen
+          name="Friends"
+          component={FriendsScreen}
+          options={{ title: "Arkadaş" }}
         />
         <Tab.Screen
           name="Profile"

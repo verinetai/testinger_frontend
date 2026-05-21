@@ -14,19 +14,28 @@ npm start
 
 ```
 src/
-  lib/supabase.ts      # Supabase client
-  api/submit-test.ts   # Edge Function wrapper
-  types/database.ts    # DB tipleri (backend ile senkron tutun)
-App.tsx                # Giriş ekranı + bağlantı testi
+  theme/               # Renk, tipografi, spacing, shadow token'ları
+  mocks/               # Mock data (Discover ekranı)
+  components/          # UI ve feature kartları
+  screens/             # Discover, Tests, Friends, Profil
+  navigation/          # Tab navigator + özel alt bar
+  services/            # Supabase (ileride API bağlantısı)
+  api/                 # Edge Function wrapper
+  types/               # DB tipleri (backend ile senkron tutun)
+App.tsx
 ```
+
+Tasarım dili: [`DESIGN.md`](./DESIGN.md)
 
 ## Git
 
-Bu klasör **kendi git reposudur**. Push yalnızca:
+Bu klasör **kendi git reposudur**. Tüm push'lar **yalnızca** buraya gider:
 
-https://github.com/verinetai/testinger_frontend
+**https://github.com/verinetai/testinger_frontend**
 
-Kök `testinger_backend` klasöründen push **yapmayın**.
+Detaylı akış: [`GIT.md`](./GIT.md)
+
+Kök `testinger_backend` klasöründen frontend push **yapmayın**.
 
 ## Arkadaşınız için notlar
 
